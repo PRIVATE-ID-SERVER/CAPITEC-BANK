@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Capitec Bank Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts for Professional Look -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --capitec-blue: #013668;
+      --capitec-light-blue: #e5f1fd;
+      --capitec-gray: #f8fafd;
+      --capitec-green: #00b386;
+      --capitec-border: #e3e6eb;
+      --capitec-text: #222c36;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: var(--capitec-gray);
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      color: var(--capitec-text);
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .dashboard-container {
+      max-width: 1100px;
+      margin: 40px auto 0 auto;
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 6px 48px #01366815;
+      padding: 36px 38px 32px 38px;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .header-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+    .sa-flag {
+      width: 44px;
+      border-radius: 8px;
+      box-shadow: 0 2px 16px #01366822;
+    }
+    .dashboard-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--capitec-blue);
+    }
+    .dashboard-sub {
+      color: #5b6f8a;
+      font-size: 1.1rem;
+      margin-left: 6px;
+      font-weight: 500;
+    }
+    .main-row {
+      display: flex;
+      gap: 38px;
+    }
+    .account-card {
+      background: var(--capitec-light-blue);
+      flex: 1.2;
+      border-radius: 16px;
+      box-shadow: 0 2px 24px #01366811;
+      padding: 28px 24px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 320px;
+    }
+    .balance-label {
+      color: #4e617b;
+      font-size: 1.1rem;
+      margin-bottom: 7px;
+    }
+    .balance-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .balance-icon {
+      background: #fff;
+      color: var(--capitec-blue);
+      border-radius: 10px;
+      padding: 7px;
+      font-size: 2.1rem;
+      box-shadow: 0 2px 8px #01366810;
+    }
+    .balance-amount {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--capitec-green);
+      letter-spacing: 1px;
+    }
+    .acc-detail {
+      color: #5b6f8a;
+      font-size: 1rem;
+      margin-bottom: 2px;
+    }
+    .divider {
+      height: 1px;
+      background: var(--capitec-border);
+      width: 100%;
+      margin: 18px 0 16px 0;
+    }
+    .btn-row {
+      width: 100%;
+      display: flex;
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .dashboard-btn {
+      flex: 1 1 0%;
+      background: var(--capitec-blue);
+      color: #fff;
+      border: none;
+      border-radius: 9px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 13px 0;
+      cursor: pointer;
+      transition: background 0.18s;
+      box-shadow: 0 2px 8px #01366812;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+    }
+    .dashboard-btn:hover, .dashboard-btn:focus {
+      background: #00407d;
+    }
+    .activity-card {
+      flex: 2;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 24px #01366811;
+      padding: 28px 28px 22px 28px;
+      min-width: 380px;
+      display: flex;
+      flex-direction: column;
+    }
+    .activity-title {
+      color: var(--capitec-blue);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .activity-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+    .activity-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--capitec-border);
+      padding: 12px 0;
+      font-size: 1.05rem;
+      gap: 8px;
+    }
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+    .activity-type {
+      font-weight: 600;
+      color: var(--capitec-green);
+      margin-right: 9px;
+    }
+    .activity-date {
+      color: #9eacc1;
+      font-size: 0.97rem;
+      margin-left: 6px;
+    }
+    .activity-amount {
+      font-weight: 600;
+      font-size: 1.13rem;
+    }
+    .activity-amount.positive {
+      color: var(--capitec-green);
+    }
+    .activity-amount.negative {
+      color: #e63b3b;
+    }
+    .security-tip {
+      background: #fffbe4;
+      border-left: 5px solid #ffd42a;
+      padding: 14px 18px;
+      border-radius: 10px;
+      font-size: 1.04rem;
+      color: #7f6a13;
+      margin-top: 18px;
+    }
+    .footer-row {
+      margin-top: 24px;
+      text-align: right;
+      font-size: 0.98rem;
+      color: #b5c3d3;
+      letter-spacing: 0.03em;
+    }
+    /* Modal styles */
+    .modal-bg {
+      position: fixed;
+      display: none;
+      top: 0; left: 0; right: 0; bottom: 0;
+      min-height: 100vh;
+      width: 100vw;
+      z-index: 1000;
+      background: #01366833;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 8px 48px #01366833;
+      padding: 38px 32px 27px 32px;
+      max-width: 370px;
+      width: 96vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: popin 0.28s cubic-bezier(.32,.98,.44,1.14);
+    }
+    .modal-card img {
+      width: 64px;
+      margin-bottom: 14px;
+    }
+    .modal-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--capitec-blue);
+      margin-bottom: 8px;
+    }
+    .modal-desc {
+      color: #4e617b;
+      font-size: 1.09rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .modal-small {
+      color: #7a8fa7;
+      font-size: 0.98rem;
+      margin-bottom: 22px;
+      text-align: center;
+    }
+    .modal-btns {
+      width: 100%;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+    .modal-btn {
+      padding: 10px 18px;
+      background: var(--capitec-blue);
+      color: #fff;
+      font-size: 1.09rem;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.15s;
+    }
+    .modal-btn.secondary {
+      background: #e6eaf4;
+      color: #013668;
+      border: 1px solid #d0d8e6;
+    }
+    .modal-btn.secondary:hover {
+      background: #f7fafd;
+    }
+    .modal-btn:hover {
+      background: #00407d;
+    }
+    @keyframes popin {
+      0% { opacity: 0; transform: scale(0.93);}
+      100% { opacity: 1; transform: scale(1);}
+    }
+    /* Responsive tweaks for large, medium, and small screens */
+    @media (max-width: 1200px) {
+      .dashboard-container {
+        max-width: 98vw;
+        padding: 28px 6vw 24px 6vw;
+      }
+      .main-row { gap: 22px; }
+    }
+    @media (max-width: 900px) {
+      .main-row {
+        flex-direction: column;
+        gap: 32px;
+      }
+      .account-card, .activity-card {
+        min-width: unset;
+        width: 100%;
+      }
+    }
+    @media (max-width: 600px) {
+      .dashboard-container {
+        padding: 14px 3vw 16px 3vw;
+      }
+      .header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 7px;
+      }
+      .modal-card { padding: 24px 10px 18px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Header -->
+    <div class="header-row">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Flag_of_South_Africa.svg" alt="South Africa" class="sa-flag" />
+      <span class="dashboard-title">Capitecbank.co.za</span>
+      <span class="dashboard-sub">Personal Account</span>
+    </div>
+
+    <div class="main-row">
+      <!-- Account Summary Card -->
+      <div class="account-card">
+        <span class="balance-label">Account Balance</span>
+        <div class="balance-row">
+          <i class="fa-solid fa-wallet balance-icon"></i>
+          <span class="balance-amount" id="balance-amount">R980,435.50</span>
+        </div>
+        <div class="acc-detail">Account Number: 1380009195</div>
+        <div class="acc-detail">User: Zakhe Mathunjwa</div>
+        <div class="acc-detail">Account Type: Recovery</div>
+        <div class="divider"></div>
+        <div class="btn-row">
+          <button class="dashboard-btn" id="deposit-btn">
+            <i class="fa-solid fa-plus"></i> Deposit
+          </button>
+        </div>
+      </div>
+
+      <!-- Recent Activity Card -->
+      <div class="activity-card">
+        <div class="activity-title">Recent Activity</div>
+        <ul class="activity-list">
+          <li class="activity-item">
+            <span>
+              <span class="activity-type">Deposit</span>
+              <span class="activity-date">03 June 2025, 09:09</span>
+            </span>
+            <span class="activity-amount positive">+R980,435.50</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Security Tip -->
+    <div class="security-tip">
+      <strong>Security Tip:</strong> Capitec will never ask for your PIN, password, or OTP. Never share sensitive info with anyone.
+    </div>
+
+    <div class="footer-row">
+      &copy; 2025 Capitec Bank &middot; All rights reserved.
+    </div>
+  </div>
+
+  <!-- Deposit Modal -->
+  <div class="modal-bg" id="deposit-modal">
+    <div class="modal-card">
+      <img src="https://img.icons8.com/external-soft-fill-juicy-fish/60/013668/external-deposit-banking-soft-fill-soft-fill-juicy-fish.png" alt="Deposit Success">
+      <div class="modal-title">Deposit Successful</div>
+      <div class="modal-desc">
+        Your deposit of <b>R980,435.50</b> has been successfully processed.
+      </div>
+      <div class="modal-small">
+        Transaction Reference: <b>CAPITECDEP20250603</b><br>
+        Date: <b>03 June 2025, 09:09</b><br>
+        Account: <b>123 456 7890</b>
+      </div>
+      <div class="modal-btns">
+        <button class="modal-btn" id="deposit-close">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Modal logic for Deposit
+    const depositBtn = document.getElementById('deposit-btn');
+    const depositModal = document.getElementById('deposit-modal');
+    const depositClose = document.getElementById('deposit-close');
+
+    depositBtn.onclick = function() {
+      depositModal.style.display = 'flex';
+    };
+    depositClose.onclick = function() {
+      depositModal.style.display = 'none';
+    };
+    // Allow clicking outside modal to close
+    window.onclick = function(e) {
+      if (e.target === depositModal) {
+        depositModal.style.display = 'none';
+      }
+    };
+  </script>
+</body>
+</html>

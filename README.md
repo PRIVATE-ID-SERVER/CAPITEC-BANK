@@ -1,1 +1,0 @@
-# CAPITEC-BANK
