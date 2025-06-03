@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Capitec Bank Dashboard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <!-- Google Fonts for Professional Look -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -35,59 +35,60 @@
       min-height: 100vh;
     }
     .dashboard-container {
-      max-width: 1100px;
+      max-width: 420px;
       margin: 40px auto 0 auto;
       background: #fff;
       border-radius: 22px;
       box-shadow: var(--capitec-shadow);
-      padding: 36px 38px 32px 38px;
+      padding: 28px 18px 24px 18px;
       min-height: 600px;
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 24px;
     }
     .header-row {
       display: flex;
       align-items: center;
       gap: 16px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      justify-content: center;
     }
     .sa-flag {
-      width: 44px;
+      width: 36px;
       border-radius: 8px;
       box-shadow: 0 2px 16px #01366822;
     }
     .dashboard-title {
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 700;
       color: var(--capitec-blue);
     }
     .dashboard-sub {
       color: #5b6f8a;
-      font-size: 1.1rem;
+      font-size: 1rem;
       margin-left: 6px;
       font-weight: 500;
     }
-    .main-row {
+    .main-col {
       display: flex;
-      gap: 38px;
+      flex-direction: column;
+      gap: 20px;
     }
     .account-card {
       background: linear-gradient(145deg, var(--capitec-light-blue) 70%, #fff 100%);
-      flex: 1.2;
       border-radius: 16px;
       box-shadow: 0 2px 24px #01366811;
-      padding: 28px 24px 24px 24px;
+      padding: 24px 16px 20px 16px;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      min-width: 320px;
+      align-items: center;
+      min-width: 0;
       position: relative;
       overflow: hidden;
     }
     .balance-label {
       color: #4e617b;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       margin-bottom: 7px;
     }
     .balance-row {
@@ -105,27 +106,30 @@
       box-shadow: 0 2px 8px #01366810;
     }
     .balance-amount {
-      font-size: 2.2rem;
+      font-size: 2.05rem;
       font-weight: 700;
       color: var(--capitec-green);
       letter-spacing: 1px;
     }
     .acc-detail {
       color: #5b6f8a;
-      font-size: 1rem;
+      font-size: 0.95rem;
       margin-bottom: 2px;
+      text-align: center;
+      width: 100%;
     }
     .divider {
       height: 1px;
       background: var(--capitec-border);
       width: 100%;
-      margin: 18px 0 16px 0;
+      margin: 16px 0 12px 0;
     }
     .btn-row {
       width: 100%;
       display: flex;
       gap: 12px;
       margin-top: 4px;
+      justify-content: center;
     }
     .dashboard-btn {
       flex: 1 1 0%;
@@ -135,7 +139,7 @@
       border-radius: 9px;
       font-size: 1.1rem;
       font-weight: 600;
-      padding: 13px 0;
+      padding: 11px 0;
       cursor: pointer;
       transition: background 0.18s, box-shadow 0.15s;
       box-shadow: 0 2px 8px #01366812;
@@ -145,6 +149,7 @@
       gap: 7px;
       outline: none;
       border-bottom: 3px solid transparent;
+      min-width: 120px;
     }
     .dashboard-btn:hover, .dashboard-btn:focus {
       background: var(--capitec-dark-blue);
@@ -160,20 +165,20 @@
       border-bottom: 3px solid #ffbcbc;
     }
     .activity-card {
-      flex: 2;
       background: #fff;
       border-radius: 16px;
       box-shadow: 0 2px 24px #01366811;
-      padding: 28px 28px 22px 28px;
-      min-width: 380px;
+      padding: 20px 12px 16px 12px;
       display: flex;
       flex-direction: column;
+      min-width: 0;
     }
     .activity-title {
       color: var(--capitec-blue);
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 600;
-      margin-bottom: 16px;
+      margin-bottom: 10px;
+      text-align: center;
     }
     .activity-list {
       list-style: none;
@@ -186,8 +191,8 @@
       justify-content: space-between;
       align-items: flex-start;
       border-bottom: 1px solid var(--capitec-border);
-      padding: 12px 0;
-      font-size: 1.05rem;
+      padding: 10px 0;
+      font-size: 0.99rem;
       gap: 8px;
     }
     .activity-item:last-child {
@@ -203,12 +208,12 @@
     }
     .activity-date {
       color: #9eacc1;
-      font-size: 0.97rem;
+      font-size: 0.93rem;
       margin-left: 6px;
     }
     .activity-amount {
       font-weight: 600;
-      font-size: 1.13rem;
+      font-size: 1.06rem;
     }
     .activity-amount.positive {
       color: var(--capitec-green);
@@ -219,14 +224,15 @@
     .security-tip {
       background: #fffbe4;
       border-left: 5px solid #ffd42a;
-      padding: 14px 18px;
+      padding: 12px 10px;
       border-radius: 10px;
-      font-size: 1.04rem;
+      font-size: 0.99rem;
       color: #7f6a13;
-      margin-top: 18px;
+      margin-top: 10px;
+      text-align: center;
     }
     .footer-row {
-      margin-top: 24px;
+      margin-top: 16px;
       text-align: center;
       font-size: 0.98rem;
       color: #b5c3d3;
@@ -249,37 +255,37 @@
       background: #fff;
       border-radius: 15px;
       box-shadow: 0 8px 48px #01366833;
-      padding: 38px 32px 27px 32px;
-      max-width: 370px;
-      width: 96vw;
+      padding: 32px 10px 22px 10px;
+      max-width: 320px;
+      width: 94vw;
       display: flex;
       flex-direction: column;
       align-items: center;
       animation: popin 0.28s cubic-bezier(.32,.98,.44,1.14);
     }
     .modal-card img {
-      width: 64px;
-      margin-bottom: 14px;
+      width: 54px;
+      margin-bottom: 12px;
     }
     .modal-title {
-      font-size: 1.4rem;
+      font-size: 1.22rem;
       font-weight: 700;
       color: var(--capitec-blue);
-      margin-bottom: 8px;
+      margin-bottom: 7px;
     }
     .modal-title.withdrawal {
       color: var(--capitec-red);
     }
     .modal-desc {
       color: #4e617b;
-      font-size: 1.09rem;
-      margin-bottom: 10px;
+      font-size: 1.01rem;
+      margin-bottom: 8px;
       text-align: center;
     }
     .modal-small {
       color: #7a8fa7;
-      font-size: 0.98rem;
-      margin-bottom: 22px;
+      font-size: 0.93rem;
+      margin-bottom: 18px;
       text-align: center;
     }
     .modal-btns {
@@ -289,10 +295,10 @@
       justify-content: center;
     }
     .modal-btn {
-      padding: 10px 18px;
+      padding: 8px 16px;
       background: var(--capitec-blue);
       color: #fff;
-      font-size: 1.09rem;
+      font-size: 1.01rem;
       border: none;
       border-radius: 7px;
       cursor: pointer;
@@ -320,34 +326,26 @@
       0% { opacity: 0; transform: scale(0.93);}
       100% { opacity: 1; transform: scale(1);}
     }
-    /* Responsive tweaks for large, medium, and small screens */
-    @media (max-width: 1200px) {
+    /* Force portrait on mobile, and fix for landscape */
+    @media screen and (orientation:landscape) and (max-width: 700px) {
+      body, html {
+        min-width: 400px;
+        min-height: 100vh;
+        /* Optionally warn user if you want, but just keep layout portrait */
+      }
       .dashboard-container {
-        max-width: 98vw;
-        padding: 28px 6vw 24px 6vw;
-      }
-      .main-row { gap: 22px; }
-    }
-    @media (max-width: 900px) {
-      .main-row {
-        flex-direction: column;
-        gap: 32px;
-      }
-      .account-card, .activity-card {
-        min-width: unset;
-        width: 100%;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
-    @media (max-width: 600px) {
+    /* Responsive tweaks for small screens */
+    @media (max-width: 460px) {
       .dashboard-container {
-        padding: 14px 3vw 16px 3vw;
+        max-width: 99vw;
+        padding: 5vw 1vw 4vw 1vw;
       }
-      .header-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 7px;
-      }
-      .modal-card { padding: 24px 10px 18px 10px; }
+      .modal-card { padding: 18px 2vw 14px 2vw; }
     }
   </style>
 </head>
@@ -357,12 +355,10 @@
     <div class="header-row">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Flag_of_South_Africa.svg" alt="South Africa" class="sa-flag" />
       <span class="dashboard-title">Capitecbank.co.za</span>
-      </div>
-    <div class="header-row">
-      <span class="dashboard-sub">Recovery Account</span>
+      <span class="dashboard-sub">Personal Account</span>
     </div>
 
-    <div class="main-row">
+    <div class="main-col">
       <!-- Account Summary Card -->
       <div class="account-card">
         <span class="balance-label">Account Balance</span>
@@ -395,6 +391,13 @@
             </span>
             <span class="activity-amount positive">+R980,435.50</span>
           </li>
+          <li class="activity-item">
+            <span>
+              <span class="activity-type withdrawal">Withdrawal</span>
+              <span class="activity-date">02 June 2025, 15:33</span>
+            </span>
+            <span class="activity-amount negative">-R12,000.00</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -412,7 +415,7 @@
   <!-- Deposit Modal -->
   <div class="modal-bg" id="deposit-modal">
     <div class="modal-card">
-      <img src="IMG_0263.jpeg" alt="Deposit Success">
+      <img src="https://img.icons8.com/external-soft-fill-juicy-fish/60/013668/external-deposit-banking-soft-fill-soft-fill-juicy-fish.png" alt="Deposit Success">
       <div class="modal-title">Deposit Successful</div>
       <div class="modal-desc">
         Your deposit of <b>R980,435.50</b> has been successfully processed.
@@ -430,18 +433,15 @@
   <!-- Withdrawal Modal -->
   <div class="modal-bg" id="withdrawal-modal">
     <div class="modal-card">
-      <img src="IMG_0263.jpeg" alt="Withdrawal Success">
-      <div class="modal-title withdrawal">Withdrawal Pending</div>
+      <img src="https://img.icons8.com/external-soft-fill-juicy-fish/60/e63b3b/external-cash-out-banking-soft-fill-soft-fill-juicy-fish.png" alt="Withdrawal Success">
+      <div class="modal-title withdrawal">Withdrawal Successful</div>
       <div class="modal-desc">
-        Your withdrawal of <b>R980,435.50 "TO" [Account: 1380009195]</b> 
-         </div>
-     <div class="modal-desc">
-        can't be successfully processed.
+        Your withdrawal of <b>R12,000.00</b> has been successfully processed.
       </div>
       <div class="modal-small">
-        Error Reference: <b>CAPITECWDL20250602</b><br>
-        RECOVERED IN BITCOIN <b>$320 BTC NEEDED</b><br>
-        <i>BITCOIN CHAIN</i> <b>bc1qxyllg8j6wkpaur6xc9l4hh5jpg2hv8khsds0fz</b>
+        Transaction Reference: <b>CAPITECWDL20250602</b><br>
+        Date: <b>02 June 2025, 15:33</b><br>
+        Account: <b>1380009195</b>
       </div>
       <div class="modal-btns">
         <button class="modal-btn withdrawal" id="withdrawal-close">Close</button>
