@@ -2,501 +2,74 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Capitec Bank Dashboard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ethereum Edge Wallet Certificate</title>
   <style>
-    :root {
-      --capitec-blue: #013668;
-      --capitec-dark-blue: #002447;
-      --capitec-light-blue: #e5f1fd;
-      --capitec-gray: #f8fafd;
-      --capitec-green: #00b386;
-      --capitec-red: #e63b3b;
-      --capitec-border: #e3e6eb;
-      --capitec-text: #222c36;
-    }
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      background: var(--capitec-gray);
-      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-      color: var(--capitec-text);
-      min-height: 100vh;
-      box-sizing: border-box;
-    }
     body {
-      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #1d1b3a, #2e1d4d);
+      color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       min-height: 100vh;
-      width: 100vw;
-      min-width: 100vw;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
     }
-    .dashboard-container {
-      min-height: 100vh;
-      width: 100vw;
-      margin: 0;
-      padding: 0;
+    .certificate-container {
       background: #fff;
-      border-radius: 0;
-      box-shadow: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      justify-content: flex-start;
-      align-items: stretch;
-    }
-    .header-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      justify-content: center;
-      padding: 24px 0 0 0;
-      background: var(--capitec-blue);
-    }
-    .sa-flag {
-      width: 34px;
-      border-radius: 8px;
-      box-shadow: 0 2px 16px #01366822;
-    }
-    .dashboard-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #fff;
-    }
-    .dashboard-sub {
-      color: #c6d6e9;
-      font-size: 1.01rem;
-      margin-left: 6px;
-      font-weight: 500;
-    }
-    .main-col {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      width: 100%;
-      max-width: 100vw;
-      flex: 1;
-      align-items: center;
-      justify-content: flex-start;
-      background: var(--capitec-gray);
-      padding: 0;
-      margin: 0;
-    }
-    .account-card {
-      background: linear-gradient(145deg, var(--capitec-light-blue) 70%, #fff 100%);
-      border-radius: 0 0 22px 22px;
-      box-shadow: 0 2px 24px #01366811;
-      padding: 20px 0 16px 0;
-      margin: 0;
-      width: 100vw;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .balance-label {
-      color: #4e617b;
-      font-size: 1.07rem;
-      margin-bottom: 7px;
-    }
-    .balance-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 8px;
-    }
-    .balance-icon {
-      background: #fff;
-      color: var(--capitec-blue);
-      border-radius: 10px;
-      padding: 7px;
-      font-size: 2.1rem;
-      box-shadow: 0 2px 8px #01366810;
-    }
-    .balance-amount {
-      font-size: 2.05rem;
-      font-weight: 700;
-      color: var(--capitec-green);
-      letter-spacing: 1px;
-    }
-    .acc-detail {
-      color: #5b6f8a;
-      font-size: 0.97rem;
-      margin-bottom: 2px;
+      color: #000;
+      border: 4px solid #4CAF50;
+      border-radius: 12px;
+      max-width: 700px;
+      width: 90%;
+      padding: 30px;
       text-align: center;
-      width: 100%;
+      box-shadow: 0 0 40px rgba(0,0,0,0.5);
     }
-    .divider {
-      height: 1px;
-      background: var(--capitec-border);
-      width: 94vw;
-      max-width: 420px;
-      margin: 16px auto 12px auto;
+    .title {
+      font-size: 28px;
+      font-weight: bold;
+      color: #333;
     }
-    .btn-row {
-      width: 94vw;
-      max-width: 420px;
-      display: flex;
-      gap: 12px;
-      margin: 0 auto;
-      justify-content: center;
+    .subtitle {
+      font-size: 18px;
+      margin: 10px 0 20px;
+      color: #4CAF50;
     }
-    .dashboard-btn {
-      flex: 1 1 0%;
-      background: var(--capitec-blue);
-      color: #fff;
-      border: none;
-      border-radius: 9px;
-      font-size: 1.09rem;
-      font-weight: 600;
-      padding: 12px 0;
-      cursor: pointer;
-      transition: background 0.18s, box-shadow 0.15s;
-      box-shadow: 0 2px 8px #01366812;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      outline: none;
-      border-bottom: 3px solid transparent;
-      min-width: 120px;
+    .details {
+      font-size: 16px;
+      margin: 20px 0;
     }
-    .dashboard-btn:hover, .dashboard-btn:focus {
-      background: var(--capitec-dark-blue);
-      box-shadow: 0 4px 18px #01366826;
-      border-bottom: 3px solid var(--capitec-green);
+    .logos {
+      margin: 20px 0;
     }
-    .dashboard-btn.withdrawal {
-      background: var(--capitec-red);
-      color: #fff;
+    .logos img {
+      height: 50px;
+      margin: 0 10px;
+      vertical-align: middle;
     }
-    .dashboard-btn.withdrawal:hover, .dashboard-btn.withdrawal:focus {
-      background: #c21a1a;
-      border-bottom: 3px solid #ffbcbc;
-    }
-    .activity-card {
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 2px 24px #01366811;
-      padding: 18px 10px 12px 10px;
-      margin: 18px auto 0 auto;
-      width: 94vw;
-      max-width: 420px;
-      display: flex;
-      flex-direction: column;
-    }
-    .activity-title {
-      color: var(--capitec-blue);
-      font-size: 1.12rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-    .activity-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      width: 100%;
-    }
-    .activity-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      border-bottom: 1px solid var(--capitec-border);
-      padding: 10px 0;
-      font-size: 0.99rem;
-      gap: 8px;
-    }
-    .activity-item:last-child {
-      border-bottom: none;
-    }
-    .activity-type {
-      font-weight: 600;
-      color: var(--capitec-green);
-      margin-right: 9px;
-    }
-    .activity-type.withdrawal {
-      color: var(--capitec-red);
-    }
-    .activity-date {
-      color: #9eacc1;
-      font-size: 0.93rem;
-      margin-left: 6px;
-    }
-    .activity-amount {
-      font-weight: 600;
-      font-size: 1.06rem;
-    }
-    .activity-amount.positive {
-      color: var(--capitec-green);
-    }
-    .activity-amount.negative {
-      color: var(--capitec-red);
-    }
-    .security-tip {
-      background: #fffbe4;
-      border-left: 5px solid #ffd42a;
-      padding: 12px 10px;
-      border-radius: 10px;
-      font-size: 0.99rem;
-      color: #7f6a13;
-      margin: 18px auto 0 auto;
-      width: 94vw;
-      max-width: 420px;
-      text-align: center;
-    }
-    .footer-row {
-      margin-top: 20px;
-      margin-bottom: 10px;
-      text-align: center;
-      font-size: 0.98rem;
-      color: #b5c3d3;
-      letter-spacing: 0.03em;
-      font-weight: 600;
-      width: 100vw;
-    }
-    /* Modal styles */
-    .modal-bg {
-      position: fixed;
-      display: none;
-      top: 0; left: 0; right: 0; bottom: 0;
-      width: 100vw;
-      height: 100vh;
-      background: #01366899;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      transition: background 0.2s;
-    }
-    .modal-bg.visible {
-      display: flex;
-    }
-    .modal-card {
-      background: #fff;
-      border-radius: 17px;
-      box-shadow: 0 8px 48px #01366833;
-      padding: 28px 10vw 22px 10vw;
-      max-width: 350px;
-      width: 90vw;
-      min-width: 220px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      animation: popin 0.28s cubic-bezier(.32,.98,.44,1.14);
-      justify-content: center;
-    }
-    .modal-card img {
-      width: 54px;
-      margin-bottom: 12px;
-    }
-    .modal-title {
-      font-size: 1.22rem;
-      font-weight: 700;
-      color: var(--capitec-blue);
-      margin-bottom: 7px;
-      text-align: center;
-    }
-    .modal-title.withdrawal {
-      color: var(--capitec-red);
-    }
-    .modal-desc {
-      color: #4e617b;
-      font-size: 1.01rem;
-      margin-bottom: 8px;
-      text-align: center;
-    }
-    .modal-small {
-      color: #7a8fa7;
-      font-size: 0.93rem;
-      margin-bottom: 18px;
-      text-align: center;
-    }
-    .modal-btns {
-      width: 100%;
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-    }
-    .modal-btn {
-      padding: 8px 16px;
-      background: var(--capitec-blue);
-      color: #fff;
-      font-size: 1.01rem;
-      border: none;
-      border-radius: 7px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background 0.15s;
-    }
-    .modal-btn.secondary {
-      background: #e6eaf4;
-      color: #013668;
-      border: 1px solid #d0d8e6;
-    }
-    .modal-btn.secondary:hover {
-      background: #f7fafd;
-    }
-    .modal-btn:hover {
-      background: #00407d;
-    }
-    .modal-btn.withdrawal {
-      background: var(--capitec-red);
-    }
-    .modal-btn.withdrawal:hover {
-      background: #c21a1a;
-    }
-    @keyframes popin {
-      0% { opacity: 0; transform: scale(0.93);}
-      100% { opacity: 1; transform: scale(1);}
-    }
-    /* Responsive tweaks for small screens */
-    @media (max-width: 460px) {
-      .dashboard-container {
-        max-width: 100vw;
-      }
-      .modal-card { padding: 18px 2vw 14px 2vw; }
-      .activity-card,
-      .security-tip,
-      .btn-row,
-      .divider { width: 98vw; }
+    .footer {
+      font-size: 14px;
+      margin-top: 30px;
+      color: #555;
     }
   </style>
 </head>
 <body>
-  <div class="dashboard-container">
-    <!-- Header -->
-    <div class="header-row">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Flag_of_South_Africa.svg" alt="South Africa" class="sa-flag" />
-      <span class="dashboard-title">Capitecbank.co.za</span>
-     </div>
-      <div class="header-row">
-      <span class="dashboard-sub">Recovery Account</span>
+  <div class="certificate-container">
+    <div class="title">Ethereum Valid Certificate</div>
+    <div class="subtitle">Edge Wallet - Licensed User</div>
+    <div class="logos">
+      <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum Logo">
+      <img src="https://edge.app/favicon.ico" alt="Edge Logo">
     </div>
-
-    <div class="main-col">
-      <!-- Account Summary Card -->
-      <div class="account-card">
-        <span class="balance-label">Account Balance</span>
-        <div class="balance-row">
-          <i class="fa-solid fa-wallet balance-icon"></i>
-          <span class="balance-amount" id="balance-amount">R980,435.50</span>
-        </div>
-        <div class="acc-detail">Account Number: 1380009195</div>
-        <div class="acc-detail">User: Zakhe Mathunjwa</div>
-        <div class="acc-detail">Account Type: Recovery</div>
-        <div class="divider"></div>
-        <div class="btn-row">
-          <button class="dashboard-btn" id="deposit-btn">
-            <i class="fa-solid fa-plus"></i> Deposit
-          </button>
-          <button class="dashboard-btn withdrawal" id="withdrawal-btn">
-            <i class="fa-solid fa-arrow-down"></i> Withdrawal
-          </button>
-        </div>
-      </div>
-
-      <!-- Recent Activity Card -->
-      <div class="activity-card">
-        <div class="activity-title">Recent Activity</div>
-        <ul class="activity-list">
-          <li class="activity-item">
-            <span>
-              <span class="activity-type">Deposit</span>
-              <span class="activity-date">03 June 2025, 09:09</span>
-            </span>
-            <span class="activity-amount positive">+R980,435.50</span>
-          </li>
-        </ul>
-      </div>
+    <div class="details">
+      <p><strong>Upgrade to Level 2</strong></p>
+      <p>Completion Required: <strong>$700</strong></p>
+      <p>Amount Paid: <strong>$43</strong></p>
+      <p>This certificate is valid and issued on behalf of Edge Wallet (Ethereum Network).</p>
     </div>
-
-    <!-- Security Tip -->
-    <div class="security-tip">
-      <strong>Security Tip:</strong> Capitec will never ask for your PIN, password, or OTP. Never share sensitive info with anyone.
-    </div>
-
-    <div class="footer-row">
-      &copy; 2025 Capitec Bank &middot; All rights reserved.
-    </div>
+    <div class="footer">Verification available on Ethereum Blockchain</div>
   </div>
-
-  <!-- Deposit Modal -->
-  <div class="modal-bg" id="deposit-modal">
-    <div class="modal-card">
-      <img src="IMG_0263.jpeg" alt="Deposit Success">
-      <div class="modal-title">Deposit Successful</div>
-      <div class="modal-desc">
-        Your deposit of <b>R980,435.50</b> has been successfully processed.
-      </div>
-      <div class="modal-small">
-        Transaction Reference: <b>CAPITECDEP20250603</b><br>
-        Date: <b>03 June 2025, 09:09</b><br>
-        Account: <b>1380009195</b>
-      </div>
-      <div class="modal-btns">
-        <button class="modal-btn" id="deposit-close">Close</button>
-      </div>
-    </div>
-  </div>
-  <!-- Withdrawal Modal -->
-  <div class="modal-bg" id="withdrawal-modal">
-    <div class="modal-card">
-      <img src="IMG_0263.jpeg" alt="Withdrawal Success">
-      <div class="modal-title withdrawal">Withdrawal Successful</div>
-      <div class="modal-desc">
-        Your withdrawal of <b>R980,435.50 "TO" [Account: 1380009195]</b> couldn't be processed successfully .
-      </div>
-      <div class="modal-small">
-        ERROR Reference: <b>CAPITECWDL20250602</b><br>
-        Recovered in BITCOIN <b>❗️Therefore a request payment of $320 BTC Required</b><br>
-        Address: <b>bc1qxyllg8j6wkpaur6xc9l4hh5jpg2hv8khsds0fz</b>
-      </div>
-      <div class="modal-btns">
-        <button class="modal-btn withdrawal" id="withdrawal-close">Close</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // Modal logic for Deposit
-    const depositBtn = document.getElementById('deposit-btn');
-    const depositModal = document.getElementById('deposit-modal');
-    const depositClose = document.getElementById('deposit-close');
-    depositBtn.onclick = function() {
-      depositModal.classList.add('visible');
-    };
-    depositClose.onclick = function() {
-      depositModal.classList.remove('visible');
-    };
-
-    // Modal logic for Withdrawal
-    const withdrawalBtn = document.getElementById('withdrawal-btn');
-    const withdrawalModal = document.getElementById('withdrawal-modal');
-    const withdrawalClose = document.getElementById('withdrawal-close');
-    withdrawalBtn.onclick = function() {
-      withdrawalModal.classList.add('visible');
-    };
-    withdrawalClose.onclick = function() {
-      withdrawalModal.classList.remove('visible');
-    };
-
-    // Allow clicking outside modal to close
-    window.onclick = function(e) {
-      if (e.target === depositModal) {
-        depositModal.classList.remove('visible');
-      }
-      if (e.target === withdrawalModal) {
-        withdrawalModal.classList.remove('visible');
-      }
-    };
-  </script>
 </body>
 </html>
