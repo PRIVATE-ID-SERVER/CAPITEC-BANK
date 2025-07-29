@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Binance Payment Certificate</title>
+  <title>Binance Licensed Payment Certificate</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Inter', 'Arial', sans-serif;
-      background: linear-gradient(180deg, #0b0e13, #1e2432 150%);
+      background: linear-gradient(180deg, #0b0e13 0%, #1e2432 100%);
       color: #f5f5f5;
       display: flex;
       justify-content: center;
@@ -20,11 +21,11 @@
       color: #181A20;
       border: 4px solid #F0B90B;
       border-radius: 18px;
-      max-width: 440px;
+      max-width: 480px;
       width: 95%;
-      padding: 36px 28px 32px 28px;
+      padding: 38px 32px 34px 32px;
       text-align: center;
-      box-shadow: 0 8px 48px 0 rgba(12, 13, 52, 0.24);
+      box-shadow: 0 8px 48px 0 rgba(12, 13, 52, 0.28);
       position: relative;
     }
     .logo-center {
@@ -39,58 +40,73 @@
       object-fit: contain;
     }
     .title {
-      font-size: 27px;
-      font-weight: 700;
+      font-size: 28px;
+      font-weight: 800;
       color: #181A20;
       margin-bottom: 4px;
       letter-spacing: 0.2px;
       line-height: 1.18;
+      text-transform: uppercase;
     }
-    .verified-badge {
+    .license-badge {
       display: inline-flex;
       align-items: center;
       background: #f0b90b;
       border-radius: 20px;
-      padding: 2px 10px 2px 6px;
+      padding: 2px 12px 2px 7px;
       margin-left: 9px;
       font-size: 15px;
       font-weight: 600;
       color: #000;
       vertical-align: middle;
+      box-shadow: 0 2px 12px 0 rgba(240,185,11,0.13);
     }
-    .verified-badge svg {
+    .license-badge svg {
       width: 20px;
       height: 20px;
-      margin-right: 5px;
+      margin-right: 6px;
       vertical-align: middle;
     }
     .subtitle {
       font-size: 17px;
       color: #e7b100;
-      margin-bottom: 26px;
-      letter-spacing: 0.04em;
+      margin-bottom: 22px;
       font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
-    .amount-section {
+    .payment-details {
       background: #f7f7fa;
       border-radius: 12px;
-      padding: 24px;
+      padding: 28px 20px 22px 20px;
       margin-bottom: 22px;
-      box-shadow: 0 2px 16px 0 rgba(240,185,11,0.06);
+      box-shadow: 0 2px 16px 0 rgba(240,185,11,0.07);
       color: #23262f;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
-    .amount-main {
-      font-size: 31px;
-      font-weight: 800;
+    .row-label {
+      font-size: 16px;
+      font-weight: 600;
       color: #181A20;
-      margin-bottom: 2px;
-      letter-spacing: 0.3px;
+      margin-bottom: 4px;
+      letter-spacing: 0.03em;
+    }
+    .row-value {
+      font-size: 19px;
+      font-weight: 800;
+      color: #0b0e13;
+      letter-spacing: 0.02em;
+      margin-left: 4px;
     }
     .amount-row {
       display: flex;
       justify-content: space-between;
-      font-size: 17px;
-      margin-top: 10px;
+      align-items: center;
+      font-size: 16px;
+      margin-top: 0px;
       font-weight: 600;
     }
     .amount-row.paid {
@@ -101,42 +117,87 @@
     }
     .amount-label {
       font-weight: 500;
-    }
-    .release-section {
-      margin-top: 16px;
-      padding: 10px 0 0 0;
-      border-top: 1px solid #ececec;
-    }
-    .release-title {
-      font-size: 17px;
-      font-weight: 600;
-      color: #181A20;
-      margin-bottom: 6px;
-      margin-top: 11px;
-    }
-    .release-amount {
-      font-size: 19px;
-      font-weight: 700;
-      color: #181A20;
-      letter-spacing: 0.03em;
-      margin-bottom: 9px;
+      letter-spacing: 0.01em;
     }
     .address-box {
       font-family: 'JetBrains Mono', 'Menlo', monospace;
       background: #23262f;
       color: #f0b90b;
       font-size: 15px;
-      padding: 8px 10px;
+      padding: 9px 12px 8px 12px;
       border-radius: 8px;
       margin: 0 auto 10px auto;
       width: fit-content;
       letter-spacing: 0.04em;
+      box-shadow: 0 2px 12px 0 rgba(240,185,11,0.09);
+    }
+    .org-section {
+      margin-bottom: 12px;
+      text-align: left;
+    }
+    .org-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0b0e13;
+      letter-spacing: 0.02em;
+      margin-bottom: 3px;
+    }
+    .org-value {
+      font-size: 15px;
+      font-family: 'JetBrains Mono', 'Menlo', monospace;
+      color: #181A20;
+      background: #f7f7fa;
+      border-radius: 7px;
+      padding: 3px 9px;
+      letter-spacing: 0.03em;
+      display: inline-block;
+    }
+    .release-section {
+      margin-top: 16px;
+      padding: 12px 0 0 0;
+      border-top: 1px solid #ececec;
+      text-align: left;
+    }
+    .release-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #181A20;
+      margin-bottom: 6px;
+      margin-top: 11px;
+      letter-spacing: 0.03em;
+    }
+    .release-amount {
+      font-size: 20px;
+      font-weight: 800;
+      color: #181A20;
+      letter-spacing: 0.03em;
+      margin-bottom: 11px;
+      margin-left: 2px;
     }
     .footer {
       font-size: 13px;
-      margin-top: 26px;
+      margin-top: 24px;
       color: #888;
       letter-spacing: 0.01em;
+      font-style: italic;
+    }
+    .legal {
+      font-size: 12px;
+      color: #888;
+      background: #fffbe6;
+      border-left: 3px solid #f0b90b;
+      padding: 6px 12px;
+      border-radius: 7px;
+      margin-top: 14px;
+      margin-bottom: 0px;
+      font-weight: 500;
+      text-align: left;
+    }
+    .hr {
+      border: 0;
+      height: 1px;
+      background: #ececec;
+      margin: 20px 0 16px 0;
     }
   </style>
 </head>
@@ -147,38 +208,60 @@
       <img src="IMG_4200.png?v=030" alt="Binance Logo">
     </div>
     <div class="title">
-      Binance Payment Certificate
-      <span class="verified-badge">
+      Binance Licensed Payment Certificate
+      <span class="license-badge">
         <svg viewBox="0 0 24 24" fill="none">
           <circle cx="12" cy="12" r="12" fill="#fff"/>
           <path d="M8.5 12.7l2.1 2.1 4.9-4.9" stroke="#0ecb81" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        Verified
+        Licensed & Verified
       </span>
     </div>
-    <div class="subtitle">Permanent Transaction Release</div>
-    <div class="amount-section">
-      <div class="amount-main">$280</div>
+    <div class="subtitle">Permanent Payment Transaction Release</div>
+    <div class="org-section">
+      <div class="org-title">Receiving Organization</div>
+      <div class="org-value">Coin Base Payment</div>
+    </div>
+    <div class="org-section">
+      <div class="org-title">Receiving Address</div>
+      <div class="org-value">TSLe6wK4Li4Z7NH4wzCWiUdLWym8m8P1eP</div>
+    </div>
+    <div class="payment-details">
+      <div class="row-label">Total Payment Amount</div>
+      <div class="row-value">50,000 USDT</div>
       <div class="amount-row paid">
-        <span class="amount-label">$21 Paid Today</span>
-        <span class="amount-label">✔</span>
+        <span class="amount-label">Amount Paid</span>
+        <span class="amount-label">500 USDT</span>
       </div>
       <div class="amount-row paid">
-        <span class="amount-label">$150 Paid Today</span>
-        <span class="amount-label">✔</span>
+        <span class="amount-label">Payment Received To</span>
+        <span class="amount-label">TY4SpRKLhXgo6KjxmbjK5CBEUhP74WbYAa</span>
       </div>
       <div class="amount-row left">
-        <span class="amount-label">$109 Left</span>
-        <span class="amount-label">Pending</span>
+        <span class="amount-label">Outstanding Payment</span>
+        <span class="amount-label">130 USDT (Pending)</span>
+      </div>
+      <div class="amount-row left">
+        <span class="amount-label">Awaiting Payment To</span>
+        <span class="amount-label">TY4SpRKLhXgo6KjxmbjK5CBEUhP74WbYAa</span>
+      </div>
+      <div class="amount-row">
+        <span class="amount-label">Certificate Amount</span>
+        <span class="amount-label">$630 USDT</span>
       </div>
     </div>
     <div class="release-section">
       <div class="release-title">Permanent Release Amount</div>
-      <div class="release-amount">$89,000.00</div>
-      <div class="address-box">USDC Base Network<br>0x50ee4dfe0f77c739603aef1ab472227942b9db7d</div>
+      <div class="release-amount">50,000 USDT</div>
+      <div class="address-box">USDT TRC20 Network<br>TSLe6wK4Li4Z7NH4wzCWiUdLWym8m8P1eP</div>
     </div>
+    <div class="legal">
+      This certificate is issued and licensed by Binance, in accordance with international financial regulations and digital asset payment laws. All transactions are securely processed and permanently recorded on-chain. Legal verification and validity available via Binance compliance.
+    </div>
+    <hr class="hr">
     <div class="footer">
-      This certificate is issued by Binance. Verification available on-chain.
+      For authentication and verification, visit Binance.com or scan on-chain records.<br>
+      Licensed Payment Certificate ID: <b>#BNP-2025-TRC-50K</b>
     </div>
   </div>
 </body>
