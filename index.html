@@ -3,91 +3,253 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Edge Wallet Upgrade Certificate</title>
+  <title>Certificate of GCash Payment</title>
+  <!-- Google Fonts for GCash feel -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #f9f9f9;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #2196f3 0%, #1e88e5 100%);
+      font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding: 40px;
-      color: #333;
+      padding: 0;
+      color: #222;
+      min-height: 100vh;
+    }
+
+    .loading-modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(33, 150, 243, 0.98);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s;
+    }
+
+    .loading-modal.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .gcash-logo {
+      width: 90px;
+      height: 90px;
+      margin-bottom: 18px;
+      animation: pulse 1.2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.08); opacity: 0.85; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .spinner {
+      border: 5px solid #e3f2fd;
+      border-top: 5px solid #1565c0;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 22px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
 
     .certificate-container {
-      max-width: 700px;
-      margin: auto;
+      max-width: 760px;
+      margin: 40px auto;
       background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(33, 150, 243, 0.12), 0 1.5px 8px rgba(30, 136, 229, 0.08);
+      padding: 38px 32px 32px 32px;
+      border: 2.5px solid #2196f3;
+      position: relative;
+      animation: fadeIn 0.9s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
     }
 
     .certificate-header {
       text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .certificate-header img {
-      width: 80px;
-      margin-bottom: 10px;
+      margin-bottom: 32px;
     }
 
     .certificate-header h1 {
-      font-size: 24px;
-      color: #2c3e50;
+      font-size: 2.3rem;
+      color: #1976d2;
       margin: 0;
-    }
-
-    .certificate-body {
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-    .highlight {
-      color: #27ae60;
-      font-weight: bold;
-    }
-
-    .certificate-footer {
-      margin-top: 30px;
-      text-align: center;
-      font-size: 14px;
-      color: #777;
+      font-weight: 700;
+      letter-spacing: 1.5px;
     }
 
     .verified-badge {
       display: inline-block;
-      background-color: #27ae60;
+      background: linear-gradient(90deg, #2196f3 60%, #1976d2 100%);
       color: #fff;
-      padding: 6px 12px;
-      border-radius: 5px;
-      font-weight: bold;
-      margin-top: 10px;
+      padding: 9px 28px;
+      border-radius: 22px;
+      font-weight: 700;
+      font-size: 1.09rem;
+      margin-top: 13px;
+      letter-spacing: 0.7px;
+      box-shadow: 0 2px 8px rgba(33, 150, 243, 0.15);
+    }
+
+    .certificate-body {
+      font-size: 1.09rem;
+      line-height: 1.8;
+      color: #333;
+      margin-bottom: 18px;
+    }
+
+    .highlight {
+      color: #1565c0;
+      font-weight: 700;
+      background: #e3f2fd;
+      border-radius: 3px;
+      padding: 2px 6px;
+      font-size: 1.08em;
+    }
+
+    h3 {
+      color: #1565c0;
+      margin-bottom: 7px;
+      margin-top: 19px;
+      font-size: 1.13rem;
+      font-weight: 600;
+    }
+
+    .info-block {
+      background: #f5faff;
+      border-left: 3.5px solid #2196f3;
+      padding: 14px 20px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+
+    .disclaimer {
+      font-size: 0.97rem;
+      color: #d32f2f;
+      background: #fff3e0;
+      border-left: 3px solid #d32f2f;
+      padding: 10px 18px;
+      border-radius: 8px;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .signature-block {
+      margin-top: 43px;
+      text-align: left;
+      font-size: 1rem;
+    }
+
+    .signature-block p {
+      margin: 6px 0;
+    }
+
+    .certificate-footer {
+      margin-top: 37px;
+      text-align: center;
+      font-size: 0.98rem;
+      color: #2196f3;
+      letter-spacing: 0.8px;
+      font-weight: 600;
+      border-top: 1px solid #e3f2fd;
+      padding-top: 14px;
     }
   </style>
 </head>
 <body>
-  <div class="certificate-container">
+  <!-- Loading Modal -->
+  <div id="loadingModal" class="loading-modal">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/GCash_logo.svg" alt="GCash Logo" class="gcash-logo"/>
+    <div class="spinner"></div>
+    <div style="color: #fff; font-size: 1.22rem; font-weight: 600; letter-spacing: 1px;">Loading Certificate...</div>
+  </div>
+
+  <!-- Certificate Content -->
+  <div class="certificate-container" style="display:none;" id="certificateContent">
     <div class="certificate-header">
-      <img src="IMG_3926.png" alt="Edge Wallet Logo" />
-      <h1>Level 2 Upgrade Certificate</h1>
-      <div class="verified-badge">✔ Verified by Edge Wallet Official</div>
+      <h1>CERTIFICATE OF GCASH PAYMENT</h1>
+      <div class="verified-badge">✔ Verified Transaction</div>
     </div>
 
     <div class="certificate-body">
-      <p>We are pleased to confirm that your account has successfully passed the initial verification process for access to <span class="highlight">$300,000 USD</span>.</p>
+      <div class="info-block">
+        <p>
+          This certificate confirms that a payment of <span class="highlight">₱250,000.00</span> has been successfully deposited to the designated TRX address following the required deposit of <span class="highlight">$28 TRX</span>.
+        </p>
+        <p>
+          The payment was officially submitted to the receiver via Blockchain and GCash, and the transaction has been verified and recorded.
+        </p>
+      </div>
 
-      <p>To complete your <strong>Level 2 Upgrade</strong>, a total payment of <span class="highlight">$750 USD</span> is required. A payment of <span class="highlight">$100 USD</span> has been verified, and a partial payment of <span class="highlight">$40 USD</span> has been received. The remaining balance is currently pending.</p>
+      <h3>Recipient Details</h3>
+      <div class="info-block">
+        <p><strong>Name:</strong> Ramon Hermogenes Jose Tantoco Tupaz Jr</p>
+        <p><strong>GCash Number:</strong> 09959880442</p>
+      </div>
 
-      <p>Once the upgrade is finalized, full access to the <span class="highlight">$300,000 USD</span> will be granted. Your withdrawal will be approved and securely processed to your registered bank account with full compliance and safety assurance.</p>
+      <h3>Sender Details</h3>
+      <div class="info-block">
+        <p><strong>Name:</strong> Juan Dela Cruz</p>
+        <p><strong>Metrobank Account Number:</strong> 1234567890</p>
+      </div>
 
-      <p>This certificate is issued with full quality assurance and reflects a user-certified service experience. All processes are compliant with Edge Wallet's standards for secure financial operations.</p>
+      <div class="info-block">
+        <p><strong>Transaction Number:</strong> <span id="trxNum">[Insert Transaction Number]</span></p>
+        <p><strong>Date:</strong> <span id="certDate">[Insert Date]</span></p>
+      </div>
+
+      <div class="disclaimer">
+        ⚠️ GCash and Metrobank are not responsible for any loss resulting from this transaction. Please ensure all details are verified before proceeding.
+      </div>
+
+      <div class="signature-block">
+        <p>__________________________</p>
+        <p><strong>[Authorized Signature]</strong></p>
+        <p><strong>[Title]</strong></p>
+        <p><strong>Date:</strong> <span id="sigDate">[Insert Date]</span></p>
+      </div>
     </div>
 
     <div class="certificate-footer">
-      &copy; 2025 Edge Wallet Inc. | Certified Secure Transaction | All Rights Reserved
+      &copy; 2025 GCash &amp; Metrobank | Blockchain Verified | All Rights Reserved
     </div>
   </div>
+
+  <script>
+    // Use login time from server/user context:
+    const loginTime = "2025-08-02 14:54:50"; // Replace with dynamic value if available
+
+    // Simulate transaction number generation (could be replaced with real value)
+    function generateTransactionNumber() {
+      return 'GCASH-' + Math.floor(1000000000 + Math.random() * 9000000000);
+    }
+
+    // After loading animation, show certificate
+    window.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        document.getElementById('loadingModal').classList.add('hide');
+        document.getElementById('certificateContent').style.display = 'block';
+
+        // Set transaction number and date
+        document.getElementById('trxNum').textContent = generateTransactionNumber();
+        document.getElementById('certDate').textContent = loginTime;
+        document.getElementById('sigDate').textContent = loginTime;
+      }, 2200); // 2.2 seconds for professional feel
+    });
+  </script>
 </body>
 </html>
