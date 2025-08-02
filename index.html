@@ -1,66 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Withdraw Certificate Licence</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edge Wallet Upgrade Certificate</title>
   <style>
-    body { background: #f8f8f8; }
-    .certificate {
-      max-width: 500px;
-      margin: 40px auto;
-      background: #fff;
-      border-radius: 24px;
-      border: 5px solid #ffe066;
-      padding: 32px;
-      font-family: Arial, sans-serif;
-      color: #222;
-      box-shadow: 0 6px 22px rgba(0,0,0,0.08);
+    body {
+      background-color: #f9f9f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 40px;
+      color: #333;
     }
-    .header { text-align: center; }
-    .binance { color: #ffe066; font-weight: bold; font-size: 22px; }
-    .title { font-size: 22px; font-weight: 600; margin-top: 12px; }
-    .subtitle { color: #ffe066; font-size: 16px; margin-bottom: 20px; }
-    .verified { color: #080; font-weight: bold; font-size: 15px; }
-    .main { background: #fcfcfc; border-radius: 16px; padding: 24px 0; text-align: center; margin-bottom: 16px; }
-    .amount { font-size: 34px; font-weight: bold; margin-bottom: 12px; }
-    .paid { color: #21c372; font-size: 17px; margin-bottom: 5px; }
-    .left { color: #fb4d4d; font-size: 17px; }
-    .status { display: flex; justify-content: center; gap: 55px; margin-top: 7px; }
-    .tick { color: #080; font-size: 17px;}
-    .pending { color: #fb4d4d; font-size: 17px;}
-    .footer { text-align: center; margin-top: 18px; color: #444;}
-    .network { color: #ffe066; font-size: 15px; }
-    .hash { font-size: 13px; color: #ffe066; word-break: break-all;}
-    .note { font-size: 11px; color: #bbb; margin-top: 16px; }
+
+    .certificate-container {
+      max-width: 700px;
+      margin: auto;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding: 30px;
+    }
+
+    .certificate-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .certificate-header img {
+      width: 80px;
+      margin-bottom: 10px;
+    }
+
+    .certificate-header h1 {
+      font-size: 24px;
+      color: #2c3e50;
+      margin: 0;
+    }
+
+    .certificate-body {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .highlight {
+      color: #27ae60;
+      font-weight: bold;
+    }
+
+    .certificate-footer {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+    }
+
+    .verified-badge {
+      display: inline-block;
+      background-color: #27ae60;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 5px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
-  <div class="certificate">
-    <div class="header">
-      <div class="binance">BINANCE</div>
-      <div class="title">Withdraw Certificate Licence</div>
-      <div class="subtitle">FOR INSTANT PAYMENT RELEASE</div>
-      <span class="verified">Verified</span>
+  <div class="certificate-container">
+    <div class="certificate-header">
+      <img src="edge-wallet-logo.png" alt="Edge Wallet Logo" />
+      <h1>Level 2 Upgrade Certificate</h1>
+      <div class="verified-badge">✔ Verified by Edge Wallet Official</div>
     </div>
-    <div class="main">
-      <div class="amount">$280</div>
-      <div class="paid">$21 Paid Today</div>
-      <div class="paid">$150 Paid Today</div>
-      <div class="left">$45 USDC Left</div>
-      <div class="status">
-        <div class="tick">&#10003;</div>
-        <div class="tick">&#10003;</div>
-        <div class="pending">Pending</div>
-      </div>
+
+    <div class="certificate-body">
+      <p>We are pleased to confirm that your account has successfully passed the initial verification process for access to <span class="highlight">$300,000 USD</span>.</p>
+
+      <p>To complete your <strong>Level 2 Upgrade</strong>, a total payment of <span class="highlight">$750 USD</span> is required. A payment of <span class="highlight">$100 USD</span> has been verified, and a partial payment of <span class="highlight">$40 USD</span> has been received. The remaining balance is currently pending.</p>
+
+      <p>Once the upgrade is finalized, full access to the <span class="highlight">$300,000 USD</span> will be granted. Your withdrawal will be approved and securely processed to your registered bank account with full compliance and safety assurance.</p>
+
+      <p>This certificate is issued with full quality assurance and reflects a user-certified service experience. All processes are compliant with Edge Wallet's standards for secure financial operations.</p>
     </div>
-    <div class="footer">
-      <div><b>Permanent Release Amount</b></div>
-      <div style="font-size:18px; font-weight:bold;">$89,000.00</div>
-      <div class="network">USDC Base Network</div>
-      <div class="hash">0x50ee4dfe0f77c739603ae1ab472227942b9d7d</div>
-      <div class="note">
-        This certificate is issued by Binance. Verification available on-chain.
-      </div>
+
+    <div class="certificate-footer">
+      &copy; 2025 Edge Wallet Inc. | Certified Secure Transaction | All Rights Reserved
     </div>
   </div>
 </body>
